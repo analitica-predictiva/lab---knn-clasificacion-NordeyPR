@@ -16,10 +16,10 @@ def pregunta_01():
     df = pd.read_csv("house-votes-84.csv", sep=",")
 
     # Cree un vector con la variable de respuesta ('party')
-    y = df[party]
+    y = df["party"]
 
     # Extraiga las variables de entrada
-    X = df.drop(____, _____=1).values
+    X = df.drop(party, axis=1).values
 
     # Importe el transformador OrdinalEncoder
     from sklearn.preprocessing import OrdinalEncoder
@@ -50,16 +50,16 @@ def pregunta_02():
     df = pd.read_csv("house-votes-84.csv", sep=",")
 
     # Cree un vector con la variable de respuesta ('party')
-    y = ____
+    y = df.party
 
     # Extraiga las variables de entrada
-    X = ____
+    X = df.drop(party, axis=1).values
 
     # Importe el transformador OrdinalEncoder
-    from ____ import ____
+    from sklearn.preprocessing import OrdinalEncoder
 
     # Transforme las variables de entrada usando fit_transform
-    X = ____().____(____)
+    X = OrdinalEncoder(categories="auto",dtype=np.float64,).fit(X)
 
     # Importe KNeighborsClassifier de sklearn.neighbors
     from sklearn.neighbors import KNeighborsClassifier
