@@ -16,7 +16,7 @@ def pregunta_01():
     df = pd.read_csv("house-votes-84.csv", sep=",")
 
     # Cree un vector con la variable de respuesta ('party')
-    y = df["party"]
+    y = df["party"].copy()
 
     # Extraiga las variables de entrada
     X = df.drop(party, axis=1).values
@@ -25,8 +25,9 @@ def pregunta_01():
     from sklearn.preprocessing import OrdinalEncoder
 
     # Transforme las variables de entrada usando fit_transform
-    X = OrdinalEncoder(categories="auto",dtype=np.float64,).fit(X)
-
+    X = OrdinalEncoder().fit_transform(X)
+    
+    
     # Importe KNeighborsClassifier de sklearn.neighbors
     from sklearn.neighbors import KNeighborsClassifier
     
@@ -38,7 +39,7 @@ def pregunta_01():
     knn.fit(X, y)
 
     # Retorne el score del clasificador
-    return knn.____(____, ____)
+    return knn.score(X, y)
 
 
 def pregunta_02():
@@ -50,7 +51,7 @@ def pregunta_02():
     df = pd.read_csv("house-votes-84.csv", sep=",")
 
     # Cree un vector con la variable de respuesta ('party')
-    y = df.party
+    y = df["party"].values
 
     # Extraiga las variables de entrada
     X = df.drop(party, axis=1).values
@@ -59,7 +60,7 @@ def pregunta_02():
     from sklearn.preprocessing import OrdinalEncoder
 
     # Transforme las variables de entrada usando fit_transform
-    X = OrdinalEncoder(categories="auto",dtype=np.float64,).fit(X)
+    X = OrdinalEncoder().fit_transform(X)
 
     # Importe KNeighborsClassifier de sklearn.neighbors
     from sklearn.neighbors import KNeighborsClassifier
